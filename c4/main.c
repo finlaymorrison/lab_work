@@ -13,6 +13,9 @@ void print_array(int const* array, int size);
 void print_histogram(int const* histogram, int size, int terminal_width);
 void encipher(const char *p, char *c, const unsigned int offset);
 void decipher(const char *c, char *p, const unsigned int offset);
+void new_encipher(const char *p, char *c, char* sub_map);
+void new_decipher(const char *c, char *p, char* sub_map);
+swap_map(char* sub_map, char* new_map, int size);
 int find_key(const char* cypher_text);
 float correctness(float* probabilities);
 
@@ -23,6 +26,62 @@ int main(int argc, char** argv)
 	encipher(text, cyphered, 5);
 	printf("%d\n", find_key(cyphered));
 	return 0;
+}
+
+void new_encipher(const char *p, char *c, char* sub_map)
+{
+	char buffer;
+	int index = 0;
+	while(buffer = p[index])
+	{
+		if (buffer == ' ')
+		{
+			c[index] = buffer;
+		}
+		else
+		{
+			c[index] = sub_map[buffer];
+			if (c[index] > 'Z')
+			{
+				c[index] = c[index] - ALPHABET_CHARARECTER_COUNT;
+			}
+		}
+		++index;
+	}
+	c[index] = '\0';
+}
+
+swap_map(char* sub_map, char* new_map, int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		new_map[sub_map[i]] = i;
+	}
+}
+
+void new_decipher(const char *c, char *p, char* sub_map)
+{
+	char new_map[ALPHABET_CHARARECTER_COUNT];
+	swap_map(sub_map, new_map, ALPHABET_CHARARECTER_COUNT);
+	char buffer;
+	int index = 0;
+	while(buffer = c[index])
+	{
+		if (buffer == ' ')
+		{
+			p[index] = buffer;
+		}
+		else
+		{
+			p[index] = new_map[buffer];
+			if (p[index] < 'A')
+			{
+				p[index] = ALPHABET_CHARARECTER_COUNT + p[index];
+			}
+		}
+		++index;
+	}
+	p[index] = '\0';
 }
 
 float correctness(float* probabilities)
