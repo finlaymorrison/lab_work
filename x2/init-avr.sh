@@ -1,1 +1,1 @@
-avrdude -c c232hm -p m644pp
+avrdude -c c232hm -p m644p
