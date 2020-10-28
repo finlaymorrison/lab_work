@@ -1,5 +1,21 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <limits.h>
+
+#define ALPHABET_CHARARECTER_COUNT 26
+#define TERMINAL_WIDTH 100
+
+void create_histogram(const char* filename, int* histogram);
+void print_array(int const* array, int size);
+void print_histogram(int const* histogram, int size, int terminal_width);
+
+int main(int argc, char** argv)
+{
+	int histogram[ALPHABET_CHARARECTER_COUNT];
+	create_histogram("bee_movie_script.txt", histogram);
+	print_histogram(histogram, ALPHABET_CHARARECTER_COUNT, TERMINAL_WIDTH);
+	return 0;
+}
 
 void create_histogram(const char* filename, int* histogram)
 {
@@ -27,8 +43,17 @@ void print_array(int const* array, int size)
 	}
 }
 
-void print_histogram(int const* histogram, int size, float scale)
+void print_histogram(int const* histogram, int size, int terminal_width)
 {
+	int max_value = INT_MIN;
+	for (int i = 0; i < size; ++i)
+	{
+		if (histogram[i] > max_value)
+		{
+			max_value = histogram[i];
+		}
+	}
+	float scale = max_value / terminal_width;
 	for (int i = 0; i < size; ++i)
 	{
 		int bar_size = histogram[i] / scale;
@@ -39,12 +64,4 @@ void print_histogram(int const* histogram, int size, float scale)
 		}
 		printf("\n");
 	}
-}
-
-int main(int argc, char** argv)
-{
-	int histogram[26];
-	create_histogram("bee_movie_script.txt", histogram);
-	print_histogram(histogram, 26, 100.0f);
-	return 0;
 }
