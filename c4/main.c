@@ -5,21 +5,21 @@
 #define ALPHABET_CHARARECTER_COUNT 26
 #define TERMINAL_WIDTH 100
 
-void create_histogram(const char* filename, int* histogram);
+void create_letter_histogram(const char* filename, int* histogram);
 void print_array(int const* array, int size);
 void print_histogram(int const* histogram, int size, int terminal_width);
 
 int main(int argc, char** argv)
 {
 	int histogram[ALPHABET_CHARARECTER_COUNT];
-	create_histogram("bee_movie_script.txt", histogram);
+	create_letter_histogram("bee_movie_script.txt", histogram);
 	print_histogram(histogram, ALPHABET_CHARARECTER_COUNT, TERMINAL_WIDTH);
 	return 0;
 }
 
-void create_histogram(const char* filename, int* histogram)
+void create_letter_histogram(const char* filename, int* histogram)
 {
-	for (int i = 0; i < 26; ++i)
+	for (int i = 0; i < ALPHABET_CHARARECTER_COUNT; ++i)
 	{
 		histogram[i] = 0;
 	}
