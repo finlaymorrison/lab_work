@@ -14,24 +14,38 @@ void decipher(const char *c, char *p, const unsigned int offset);
 int main(int argc, char** argv)
 {
 	int histogram[ALPHABET_CHARARECTER_COUNT];
-	create_letter_histogram("bee_movie_script.txt", histogram);
-	char pp[10];
-	char aa[10];
-	const char* ppp = "dhjeiqldu";
-	encipher(ppp, pp, 1);
-	decipher(pp, aa, 1);
-	printf("%s\n", aa);
+	//create_letter_histogram("bee_movie_script.txt", histogram);
+	const char* intial_message = "UNENCIPHERED";
+	char encipered[13];
+	char unenciphered[13];
+	printf("initial message: %s\n", intial_message);
+	encipher(intial_message, encipered, 5);
+	printf("enciphered message: %s\n", encipered);
+	decipher(encipered, unenciphered, 5);
+	printf("deciphered message: %s\n", unenciphered);
 	//print_histogram(histogram, ALPHABET_CHARARECTER_COUNT, TERMINAL_WIDTH);
 	return 0;
 }
 
 void encipher(const char *p, char *c, const unsigned int offset)
 {
+	int real_offset = offset % 26;
 	char buffer;
 	int index = 0;
 	while(buffer = p[index])
 	{
-		c[index] = buffer + offset;
+		if (buffer == ' ')
+		{
+			c[index] = buffer;
+		}
+		else
+		{
+			c[index] = buffer + real_offset;
+			if (c[index] > 'Z')
+			{
+				c[index] = c[index] - ALPHABET_CHARARECTER_COUNT;
+			}
+		}
 		++index;
 	}
 	c[index] = '\0';
@@ -39,11 +53,23 @@ void encipher(const char *p, char *c, const unsigned int offset)
 
 void decipher(const char *c, char *p, const unsigned int offset)
 {
+	int real_offset = offset % 26;
 	char buffer;
 	int index = 0;
 	while(buffer = c[index])
 	{
-		p[index] = buffer - offset;
+		if (buffer == ' ')
+		{
+			p[index] = buffer;
+		}
+		else
+		{
+			p[index] = buffer - real_offset;
+			if (p[index] < 'A')
+			{
+				p[index] = ALPHABET_CHARARECTER_COUNT + p[index];
+			}
+		}
 		++index;
 	}
 	p[index] = '\0';
