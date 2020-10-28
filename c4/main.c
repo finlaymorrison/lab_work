@@ -15,7 +15,7 @@ void encipher(const char *p, char *c, const unsigned int offset);
 void decipher(const char *c, char *p, const unsigned int offset);
 void new_encipher(const char *p, char *c, char* sub_map);
 void new_decipher(const char *c, char *p, char* sub_map);
-swap_map(char* sub_map, char* new_map, int size);
+void swap_map(char* sub_map, char* new_map, int size);
 int find_key(const char* cypher_text);
 float correctness(float* probabilities);
 
@@ -51,7 +51,7 @@ void new_encipher(const char *p, char *c, char* sub_map)
 	c[index] = '\0';
 }
 
-swap_map(char* sub_map, char* new_map, int size)
+void swap_map(char* sub_map, char* new_map, int size)
 {
 	for (int i = 0; i < size; ++i)
 	{
