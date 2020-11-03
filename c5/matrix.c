@@ -18,7 +18,7 @@ Matrix createMatrix(const unsigned int nRows, const unsigned int nCols)
 	mat.element = (double**)malloc(nCols);
 	for (int i = 0; i < nCols; ++i)
 	{
-		mat.element[i] = (double*)malloc(nRows);
+		mat.element[i] = (double*)malloc(nRows * sizeof(double*));
 	}
 	return mat;
 }

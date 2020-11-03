@@ -14,7 +14,7 @@ Vector createVector(const unsigned int nLength)
 {
 	Vector vec;
 	vec.length = nLength;
-	vec.element = (float*)malloc(nLength);
+	vec.element = (float*)malloc(nLength * sizeof(float*));
 	return vec;
 }
 
