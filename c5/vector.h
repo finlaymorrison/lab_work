@@ -14,7 +14,7 @@
 typedef struct
 {
         unsigned int length;
-        long double* element;
+        double* element;
 } Vector;
 
 

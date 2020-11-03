@@ -12,7 +12,10 @@
 
 Vector createVector(const unsigned int nLength)
 {
-	/* TODO */
+	Vector vec;
+	vec.length = nLength;
+	vec.element = (float*)malloc(nLength);
+	return vec;
 }
 
 Vector createVectorFromFile(const char *filename)
@@ -41,7 +44,7 @@ Vector createVectorFromFile(const char *filename)
 
 void destroyVector(Vector vec)
 {
-	/* TODO */
+	free(vec.element);
 }
 
 void printVector(const Vector vec)

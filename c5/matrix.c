@@ -12,7 +12,15 @@
 
 Matrix createMatrix(const unsigned int nRows, const unsigned int nCols)
 {
-	/* TODO */
+	Matrix mat;
+	mat.rows = nRows;
+	mat.cols = nCols;
+	mat.element = (double**)malloc(nCols);
+	for (int i = 0; i < nCols; ++i)
+	{
+		mat.element[i] = (double*)malloc(nRows);
+	}
+	return mat;
 }
 
 Matrix createMatrixFromFile(const char *filename)
@@ -55,7 +63,11 @@ Matrix createMatrixFromFile(const char *filename)
 
 void destroyMatrix(Matrix mat)
 {
-	/* TODO */
+	for (int i = 0; i < mat.cols; ++i)
+	{
+		free(mat.element[i]);
+	}
+	free(mat.element);
 }
 
 void printMatrix(const Matrix mat)

@@ -15,7 +15,7 @@ typedef struct
 {
         unsigned int rows;
         unsigned int cols;
-        long double** element
+        double** element
 } Matrix;
 
 /* Interfaces */
