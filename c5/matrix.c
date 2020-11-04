@@ -15,10 +15,10 @@ Matrix createMatrix(const unsigned int nRows, const unsigned int nCols)
 	Matrix mat;
 	mat.rows = nRows;
 	mat.cols = nCols;
-	mat.element = (double**)malloc(nCols * sizeof(double*));
+	mat.element = (double**)calloc(nCols, sizeof(double*));
 	for (int i = 0; i < nCols; ++i)
 	{
-		mat.element[i] = (double*)malloc(nRows * sizeof(double));
+		mat.element[i] = (double*)calloc(nRows, sizeof(double));
 	}
 	return mat;
 }
