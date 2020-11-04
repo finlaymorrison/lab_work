@@ -1,4 +1,4 @@
-/*
+ /*
  *         File: vector.h
  *       Author: Steve Gunn
  *      License: MIT License

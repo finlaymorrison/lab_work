@@ -16,13 +16,17 @@ Circuit createCircuitFromFile(const char *filename)
 	Circuit c = {0, 0, 0, 0, 0, NULL};
 	Component p;
 	FILE *fPtr;
-	
+
 	/* Try to open the file */
 	fPtr = fopen(filename, "r");
+
 	if (!fPtr) { fprintf(stderr, "Could not open file: %s\n", filename); exit(EXIT_FAILURE); }
 	
 	/* Read the netlist to find out how many components there are and dynamically allocate the memory */
-	while(fscanf(fPtr, "%s %u %u %lf", p.name, &p.n1, &p.n2, &p.value) == 4) c.nC++; 
+	while(fscanf(fPtr, "%s %u %u %lf", p.name, &p.n1, &p.n2, &p.value) == 4)
+	{
+		c.nC++;
+	}
 	c.comp = (Component *)malloc(c.nC*sizeof(Component));
 
 	/* Do another pass to read in the components */

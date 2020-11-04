@@ -9,7 +9,7 @@
 CC = gcc
 FLAGS = -pedantic -Wall
 
-analyse: analyse.c circuit.o matrix.o vector.o 
+analyse: analyse.c circuit.o  matrix.o vector.o 
 	$(CC) analyse.c circuit.o matrix.o vector.o -o analyse $(FLAGS)
 
 circuit.o: circuit.c circuit.h
