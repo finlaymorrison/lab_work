@@ -1,24 +1,3 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: controller
-//            :
-// File name  : controller.sv
-//            :
-// Description: Controller for PlayBus level 1 emulator
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 24/08/17
-//            : 
-/////////////////////////////////////////////////////////////////////
-
 module controller (input logic clk, input logic [2:0] func,
                    output logic ROMO, RAMO, RAMW, SWBEN, LEDLTCH);
                    

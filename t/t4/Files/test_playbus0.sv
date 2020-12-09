@@ -1,24 +1,3 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: test_playbus0
-//            :
-// File name  : test_playbus0.sv
-//            :
-// Description: PlayBus level 0 testbench
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 24/08/17
-//            : 
-/////////////////////////////////////////////////////////////////////
-
 module test_playbus0;
 
 logic [6:0] disp0, disp1;  

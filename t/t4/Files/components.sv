@@ -1,27 +1,3 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: 
-//            :
-// File name  : components.sv
-//            :
-// Description: Components for PlayBus emulator
-//            : Simplified version. Smaller address space. Positive logic.
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 23/08/17
-//            : 
-/////////////////////////////////////////////////////////////////////
-
-
-
 module contention (output logic contend, Z, input logic RAMO, ROMO, SWBEN);
 
 always_comb
