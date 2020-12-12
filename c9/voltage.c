@@ -7,7 +7,7 @@
 void init_adc()
 {
     /* Set prescaler to 2^6 = 64. */
-    ADCSRA |= _BV(ADPS0);
+    ADCSRA = 0;
     /* Enable ADC. */
     ADCSRA |= _BV(ADEN);
 }
@@ -31,9 +31,8 @@ int main(void)
 	
 	while (1) 
 	{
-		/* Reading the current value from the ADV */
+		/* Reading the current value from the ADC */
 		uint16_t result = read_adc();
-
 		/* Working out the voltage from the result of the ADC. */
 		double voltage = (result / 1023.0) * AVR_PIN_HIGH_VOLTAGE;
 
