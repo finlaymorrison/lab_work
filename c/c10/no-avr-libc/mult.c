@@ -67,6 +67,8 @@ void INT0_VECTOR ()
     asm("reti"); /* Return from interrupt */
 }
 
+/* Code here */
+
 /* Interrupt on PD3 */
 #define INT1_VECTOR __vector_2
 void INT1_VECTOR ()
