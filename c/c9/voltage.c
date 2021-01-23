@@ -9,7 +9,11 @@ void init_adc()
 	/* Set reference to AVCC */
 	ADMUX |= _BV(REFS0);
     /* Set prescaler to 2^6 = 64. */
+<<<<<<< HEAD:c9/voltage.c
+    ADCSRA = 0;
+=======
     ADCSRA |= _BV(ADPS2) | _BV(ADPS1);
+>>>>>>> d351cc9ac446f5088f5cc6cebf5ee063cddac0bc:c/c9/voltage.c
     /* Enable ADC. */
     ADCSRA |= _BV(ADEN);
 }
@@ -46,15 +50,14 @@ int main(void)
 	{
 		/* Reading the current value from the ADC */
 		uint16_t result = read_adc();
+<<<<<<< HEAD:c9/voltage.c
+		/* Working out the voltage from the result of the ADC. */
+		double voltage = (result / 1023.0) * AVR_PIN_HIGH_VOLTAGE;
 
-		/* 880 corresponds to 2.84V on the ADC */
-		if (result < 880)
-		{
-			PORTB |= _BV(PB7);
-		}
-		else
-		{
-			PORTB &= ~_BV(PB7);
-		}
+		/* Printing the value of the ADC through UART. */
+		printf("%4d : %6.5fV\n", result, voltage);
+
+		/* Waiting 1 second. */
+		//_delay_ms(1000);
 	}
 }
