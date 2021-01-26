@@ -6,8 +6,9 @@
 #include <unordered_map>
 #include <algorithm>
 #include <bitset>
+#include <stdexcept>
 
-std::string load_file(std::string filename)
+std::string load_file(const std::string& filename)
 {
     std::ifstream file(filename);
     std::stringstream buffer;
@@ -16,10 +17,10 @@ std::string load_file(std::string filename)
     return buffer.str();
 }
 
-std::string remove_comments(std::string str)
+std::string remove_comments(const std::string& str)
 {
     std::string uncommented;
-    for (char c : str)
+    for (const char& c : str)
     {
         if (c == ';')
         {
@@ -30,11 +31,11 @@ std::string remove_comments(std::string str)
     return uncommented;
 }
 
-std::string remove_extra_whitespace(std::string str)
+std::string remove_extra_whitespace(const std::string& str)
 {
     std::string whitespace_compressed;
     bool prev_char_whitespace = true;
-    for (char c : str)
+    for (const char& c : str)
     {
         if (c == ' ' || c == '\t')
         {
@@ -61,7 +62,7 @@ std::vector<std::string> compress_labels(std::vector<std::string> lines)
 {
     std::vector<std::string> compressed;
     std::string from_last;
-    for (std::string str : lines)
+    for (const std::string& str : lines)
     {
         if (str.find(':') != std::string::npos)
         {
@@ -77,7 +78,7 @@ std::vector<std::string> compress_labels(std::vector<std::string> lines)
     return compressed;
 }
 
-std::vector<std::string> preprocess(std::string raw)
+std::vector<std::string> preprocess(const std::string& raw)
 {
     std::vector<std::string> preprocessed;
     std::istringstream ss(raw);
@@ -94,28 +95,23 @@ std::vector<std::string> preprocess(std::string raw)
     return compress_labels(preprocessed);
 }
 
-std::vector<std::string> split_string(std::string str, char delim)
+std::pair<std::string, std::string> parse_line(const std::string& str, char delim)
 {
-    std::vector<std::string> split_strings;
-    std::string curr_part;
-    for (char c : str)
+    if (str.find(delim) == std::string::npos)
     {
-        if (c == delim)
-        {
-            split_strings.push_back(curr_part);
-            curr_part = "";
-            continue;
-        }
-        else
-        {
-            curr_part += c;
-        }
+        throw std::runtime_error("only one token on line: " + str);
     }
-    split_strings.push_back(curr_part);
-    return split_strings;
+    if (std::count(str.begin(), str.end(), ' ') > 2)
+    {
+        throw std::runtime_error("too many tokens on line: " + str);
+    }
+    std::pair<std::string, std::string> split;
+    split.first = str.substr(0, str.find(' '));
+    split.second = str.substr(str.find(' ') + 1, str.length() - str.find(' '));
+    return split;
 }
 
-std::vector<std::vector<std::string>> split_lines_and_sub(std::vector<std::string> lines)
+std::vector<std::pair<std::string, std::string>> tokenise(const std::vector<std::string>& lines)
 {
     std::vector<std::string> new_lines;
     std::unordered_map<std::string, int> label_map;
@@ -150,27 +146,36 @@ std::vector<std::vector<std::string>> split_lines_and_sub(std::vector<std::strin
         new_lines.push_back(new_line);
     }
     
-    std::vector<std::vector<std::string>> split_lines;
-    for (std::string str : new_lines)
+    std::vector<std::pair<std::string, std::string>> parsed_lines;
+    for (const std::string& str : new_lines)
     {
-        split_lines.push_back(split_string(str, ' '));
+        parsed_lines.push_back(parse_line(str, ' '));
     }
-    for (std::vector<std::string>& strs : split_lines)
+    for (std::pair<std::string, std::string>& parsed_line : parsed_lines)
     {
-        for (std::string& str : strs)
+        if (label_map.find(parsed_line.second) != label_map.end())
         {
-            if (label_map.find(str) != label_map.end())
-            {
-                str = std::to_string(label_map[str]);
-            }
+            parsed_line.second = std::to_string(label_map[parsed_line.second]);
         }
     }
-    return split_lines;
+    return parsed_lines;
 }
 
-uint8_t calc_machine_code(std::vector<std::string> instr, int prog_len, std::vector<int>& constants)
+bool is_str_int(const std::string str)
 {
-    std::unordered_map<std::string, uint8_t> opcodes = {
+    for (const char& c : str)
+    {
+        if (!isdigit(c))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+uint8_t calc_machine_code(const std::pair<std::string, std::string>& instr, int prog_len, std::vector<int>& constants)
+{
+    const static std::unordered_map<std::string, uint8_t> opcodes = {
         std::make_pair("ldr", 0),
         std::make_pair("str", 1),
         std::make_pair("add", 2),
@@ -179,37 +184,49 @@ uint8_t calc_machine_code(std::vector<std::string> instr, int prog_len, std::vec
         std::make_pair("xor", 5),
         std::make_pair("drf", 6),
     };
-    uint8_t opcode = opcodes[instr[0]];
+    if (opcodes.find(instr.first) == opcodes.end())
+    {
+        throw std::runtime_error("invalid opcode " + instr.first);
+    }
+    uint8_t opcode = opcodes.at(instr.first);
     uint8_t address;
     if (opcode == 0b110) return opcode << 5;
-    if (instr.back()[0] == '[')
+    if (instr.second[0] == '[' && instr.second.back() == ']')
     {
-        address = stoi(instr.back().substr(1, instr.back().length() - 2));
+        if (!is_str_int(instr.second.substr(1, instr.second.length() - 2)))
+        {
+            throw std::runtime_error("not a valid operand: " + instr.second);
+        }
+        address = stoi(instr.second.substr(1, instr.second.length() - 2));
     }
     else
     {
+        if (!is_str_int(instr.second))
+        {
+            throw std::runtime_error("not a valid operand: " + instr.second);
+        }
         address = prog_len + constants.size();
-        constants.push_back(stoi(instr.back()));
+        constants.push_back(stoi(instr.second));
     }
     return (opcode << 5) | address;
 }
 
-std::vector<uint8_t> compile(std::vector<std::vector<std::string>> lines)
+std::vector<uint8_t> compile(const std::vector<std::pair<std::string, std::string>>& lines)
 {
     std::vector<int> constants;
     std::vector<uint8_t> machine_code;
-    for (std::vector<std::string> line : lines)
+    for (const std::pair<std::string, std::string>& line : lines)
     {
         machine_code.push_back(calc_machine_code(line, lines.size(), constants));
     }
-    for (int constant : constants)
+    for (int& constant : constants)
     {
         machine_code.push_back(constant);
     }
     return machine_code;
 }
 
-std::string conv_to_sv(std::vector<uint8_t> machine_code)
+std::string conv_to_sv(const std::vector<uint8_t>& machine_code)
 {
     std::string sv_code;
     for (int i = 0; i < machine_code.size(); ++i)
@@ -239,11 +256,17 @@ std::string conv_to_sv(std::vector<uint8_t> machine_code)
             line += "DEREF, 5'd";
             break;
         }
-        line += std::to_string(machine_code[i] & 0b11111) + "};";
-        sv_code += line + '\n';
+        sv_code += line + std::to_string(machine_code[i] & 0b11111) + "};\n";
     }
     sv_code.pop_back();
     return sv_code;
+}
+
+void output_string_to_file(const std::string& str, const std::string& filename)
+{
+    std::ofstream out_file(filename);
+    out_file << str << std::endl;
+    out_file.close();
 }
 
 int main(int argc, char** argv)
@@ -253,13 +276,19 @@ int main(int argc, char** argv)
         std::cerr << "Error: not enough arguments, usage: " << argv[0] << " [input filename] [output filename]\n";
         return 1;
     }
-    std::string raw_file = load_file(argv[1]);
-    std::vector<std::string> preprocesssed_file = preprocess(raw_file);
-    std::vector<std::vector<std::string>> shredded = split_lines_and_sub(preprocesssed_file);
-    std::vector<uint8_t> machine_code = compile(shredded);
-    std::string sv_code = conv_to_sv(machine_code);
-    std::ofstream out_file(argv[2]);
-    out_file << sv_code << std::endl;
-    out_file.close();
-    return 0;
+    try
+    {
+        std::string raw_file = load_file(argv[1]);
+        std::vector<std::string> preprocesssed_file = preprocess(raw_file);
+        std::vector<std::pair<std::string, std::string>> tokenised = tokenise(preprocesssed_file);
+        std::vector<uint8_t> machine_code = compile(tokenised);
+        std::string sv_code = conv_to_sv(machine_code);
+        output_string_to_file(sv_code, argv[2]);
+        return 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return 1;
+    }
 }
