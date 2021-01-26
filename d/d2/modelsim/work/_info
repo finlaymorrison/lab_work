@@ -1,0 +1,263 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/finlay/src/labs/d/d2/modelsim
+valu
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1611602499
+!i10b 1
+!s100 FL;Bj0XUda_<bBgc@Nz[>3
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IKzHZ;1?KU;fnQ0mYbmTZA1
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1611526582
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/alu.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/alu.sv
+!i122 67
+L0 23 29
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1611602499.000000
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/alu.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/alu.sv|
+!i113 1
+Z7 o-work work
+Z8 tCvgOpt 0
+vbuffer
+R1
+R2
+!i10b 1
+!s100 51m?Al0ELe8ONU@HAaJVh1
+R3
+IZ><3]@6j^<6POn8ZMDjEL1
+R4
+S1
+R0
+w1611526775
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/buffer.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/buffer.sv
+!i122 68
+L0 1 23
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/buffer.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/buffer.sv|
+!i113 1
+R7
+R8
+vcpu3
+R1
+R2
+!i10b 1
+!s100 dWF[:m657RCbcaMln=d<H3
+R3
+Iazk<:Ea<j2bPliF<3fnXG2
+R4
+S1
+R0
+w1611526668
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/cpu3.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/cpu3.sv
+!i122 69
+L0 25 30
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/cpu3.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/cpu3.sv|
+!i113 1
+R7
+R8
+vir
+R1
+R2
+!i10b 1
+!s100 H3XRfVC3Ob9HM`XH6E`:O3
+R3
+IV7d:YX`OfSYNcDVSc@C;X2
+R4
+S1
+R0
+w1611010597
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/ir.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/ir.sv
+!i122 70
+Z9 L0 23 20
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/ir.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/ir.sv|
+!i113 1
+R7
+R8
+vpc
+R1
+R2
+!i10b 1
+!s100 7^:WJe22:g1=koYam8EXg3
+R3
+I784VzLL5_:HILU::iSZg;1
+R4
+S1
+R0
+w1611516408
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/pc.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/pc.sv
+!i122 71
+R9
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/pc.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/pc.sv|
+!i113 1
+R7
+R8
+vram
+R1
+R2
+!i10b 1
+!s100 ZmNnOa`7RBRW_fQKGaXD00
+R3
+IfealV@X>m_;V0A5c_W?1Q3
+R4
+S1
+R0
+w1611517351
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/ram.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/ram.sv
+!i122 72
+L0 24 35
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/ram.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/ram.sv|
+!i113 1
+R7
+R8
+vregister
+R1
+R2
+!i10b 1
+!s100 nWO>9Eek81Q37GH8Cziaf1
+R3
+IHV30Tlz>VZDPY9o;X7o`Z3
+R4
+S1
+R0
+w1611527204
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/register.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/register.sv
+!i122 73
+L0 1 28
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/register.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/register.sv|
+!i113 1
+R7
+R8
+vrom
+R1
+R2
+!i10b 1
+!s100 DoBMEFWBNeC7;1?T>]N_=0
+R3
+I1D6Ieh_PTMhJH]VB^:Yze0
+R4
+S1
+R0
+w1611602489
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/rom.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/rom.sv
+Z10 F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/opcodes.h
+!i122 74
+L0 23 70
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/opcodes.h|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/rom.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/rom.sv|
+!i113 1
+R7
+R8
+vsequencer
+R1
+R2
+!i10b 1
+!s100 Y5<6<XcFLa8eW<UcE0CK`2
+R3
+I4RHLgh^P^SC2IGn[j3g@O0
+R4
+S1
+R0
+w1611602273
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/sequencer.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/sequencer.sv
+R10
+!i122 75
+L0 23 167
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/opcodes.h|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/sequencer.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/sequencer.sv|
+!i113 1
+R7
+R8
+vtestcpu
+R1
+R2
+!i10b 1
+!s100 LATRSfk]ko8cOo;;@:Vjm0
+R3
+IUdRI_M8Y2heh3WR8G3S=J2
+R4
+S1
+R0
+w1611595481
+8/home/finlay/src/labs/d/d2/modelsim/cpu 2021/testcpu.sv
+F/home/finlay/src/labs/d/d2/modelsim/cpu 2021/testcpu.sv
+!i122 76
+L0 23 30
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/finlay/src/labs/d/d2/modelsim/cpu 2021/testcpu.sv|
+!s90 -reportprogress|300|-work|work|/home/finlay/src/labs/d/d2/modelsim/cpu 2021/testcpu.sv|
+!i113 1
+R7
+R8
