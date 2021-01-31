@@ -13,5 +13,14 @@ set_location_assignment PIN_A17 -to HEX1[4]
 set_location_assignment PIN_A18 -to HEX1[5]
 set_location_assignment PIN_B17 -to HEX1[6]
 
+set_location_assignment PIN_C10 -to switches[0]
+set_location_assignment PIN_C11 -to switches[1]
+set_location_assignment PIN_D12 -to switches[2]
+set_location_assignment PIN_C12 -to switches[3]
+set_location_assignment PIN_A12 -to switches[4]
+set_location_assignment PIN_B12 -to switches[5]
+set_location_assignment PIN_A13 -to switches[6]
+set_location_assignment PIN_A14 -to switches[7]
+
 set_location_assignment PIN_B8 -to reset
 set_location_assignment PIN_A7 -to clock

@@ -43,10 +43,16 @@ switches = 8'b00000001;
 n_reset = 1'b1;
 #1ns n_reset = 1'b0;
 #2ns n_reset = 1'b1;
-for (int i = 0; i < 256; i++)
-    begin
-    #5000ns switches = switches + 1;
-    end
+
+switches = 5'b01111;
+#1ms switches = 5'b01001;
+#1ms switches = 5'b11001;
+#1ms switches = 5'b10100;
+#1ms switches = 5'b01101;
+#1ms switches = 5'b01101;
+#1ms switches = 5'b10110;
+#1ms switches = 5'b01011;
+
 end
 
 endmodule

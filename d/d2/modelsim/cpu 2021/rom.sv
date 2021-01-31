@@ -50,13 +50,13 @@ always_comb
   begin
   mdr = 0;
   case (mar)
-    0: mdr = {`LOAD, 5'd15};
-	  1: mdr = {`DEREF, 5'd0};
+    0: mdr = {`LOAD, 5'd30};
+    1: mdr = {`XOR, 5'd15};
     2: mdr = {`STORE, 5'd31};
-    3: mdr = {`BNE, 5'd13};
-    13: mdr = 0;
-    14: mdr = 5;
-    15: mdr = 14;
+    3: mdr = {`LOAD, 5'd15};
+    4: mdr = {`BNE, 5'd14};
+    14: mdr = 0;
+    15: mdr = 10;
     default: mdr = 0;
   endcase
   end

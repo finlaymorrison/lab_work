@@ -52,7 +52,6 @@ alu #(.WORD_W(WORD_W), .OP_W(OP_W)) a1 (.*);
 
 ram #(.WORD_W(WORD_W), .OP_W(OP_W)) r1 (.*);
 
-rom #(.WORD_W(WORD_W), .OP_W(OP_W)) r2 (.*);
-
+rom #(.WORD_W(WORD_W), .OP_W(OP_W)) r2 (.*); 
 
 endmodule

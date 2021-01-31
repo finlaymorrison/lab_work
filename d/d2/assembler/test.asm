@@ -1,7 +1,6 @@
     ; initializing RAM locations 16 and 17 to the first 2 fibonacci numbers
-    ldr 0
-    str [16]
     ldr 1
+    str [16]
     str [17]
 
     str [31] ; putting first value on displays
@@ -12,7 +11,10 @@ loop:
     add [17]
     str [18]
 
-    ; move the old largest fibonnacii number to RAM location 16
+    ; putting value on the displays
+    str [31]
+
+    ; move the old largest fibonnaci number to RAM location 16
     ldr [17]
     str [16]
 
