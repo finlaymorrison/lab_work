@@ -83,7 +83,7 @@ std::vector<std::string> preprocess(const std::string& raw)
     std::vector<std::string> preprocessed;
     std::istringstream ss(raw);
     std::string line;
-    while (std::getline(ss, line, '\n'))
+    while (std::getline(ss, line))
     {
         line = remove_comments(line);
         line = remove_extra_whitespace(line);
