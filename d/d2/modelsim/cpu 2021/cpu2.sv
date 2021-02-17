@@ -1,27 +1,3 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: cpu2
-//            :
-// File name  : cpu2.sv
-//            :
-// Description: Top level of basic processor
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 05/08/08
-//            : Version 1.1 17/12/13
-//            : Version 1.2 11/12/14
-//            : Version 1.3 15/01/18
-//            : Version 1.4 08/01/21 - For remote working
-/////////////////////////////////////////////////////////////////////
-
 module cpu2 #(parameter WORD_W = 8, OP_W = 3)
              (input logic clock, n_reset,
               inout wire [WORD_W-1:0] sysbus,

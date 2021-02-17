@@ -1,25 +1,3 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: sequencer
-//            :
-// File name  : sequencer.sv
-//            :
-// Description: Sequencer for basic processor
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 05/08/08
-//            : Version 1.1 17/12/13
-//            : Version 1.2 14/01/21 Simplified some of the syntax
-/////////////////////////////////////////////////////////////////////
-
 module sequencer #(parameter WORD_W = 8, OP_W = 3)
                   (input logic clock, n_reset, z_flag,
                    input logic [OP_W-1:0] op,

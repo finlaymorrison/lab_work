@@ -1,10 +1,11 @@
-#include <vector>
 #include <iostream>
+#include <complex>
 
-int main(int argc, char** argv)
+using namespace std::complex_literals;
+
+int main(int argc, char** argv) 
 {
-    std::vector<int> v;
-    std::cout << "Size: " << v.size() << std::endl;
-    v.insert(v.end(), 1);
-    std::cout << "Size: " << v.size() << std::endl;
+    std::complex<double> val = 2.4 + 1.2i;
+    std::cout << val << std::endl;
+    return 0;
 }

@@ -1,25 +1,3 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: TestCPU
-//            :
-// File name  : testcpu.sv
-//            :
-// Description: Simple testbench for basic processor
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 05/08/08
-//            : Version 1.2 19/12/17
-//            : Version 1.3 08/01/21 - For remote working
-/////////////////////////////////////////////////////////////////////
-
 module testcpu;
 
 parameter int WORD_W = 8, OP_W = 3;
