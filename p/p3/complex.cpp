@@ -5,6 +5,8 @@
 
 #include <ccomplex>
 
+class angle;
+
 /* Templating to allow for the class to represent a complex number of any numeric type */
 template<
     typename Ty,
@@ -174,13 +176,15 @@ constexpr complex<decltype(Ty_a() * Ty_b())> operator* (const complex<Ty_a>& a, 
     return {real, img};
 }
 
-template<typename Ty_cmplx, typename Ty_real, typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
+template<typename Ty_cmplx, typename Ty_real,
+         typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
 constexpr complex<decltype(Ty_cmplx() * Ty_real())> operator* (const complex<Ty_cmplx>& c_num, const Ty_real& re_num) noexcept
 {
     return {c_num.re() * re_num, c_num.im() * re_num};
 }
 
-template<typename Ty_cmplx, typename Ty_real, typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
+template<typename Ty_cmplx, typename Ty_real,
+         typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
 constexpr complex<decltype(Ty_real() * Ty_cmplx())> operator* (const Ty_real& re_num, const complex<Ty_cmplx>& c_num) noexcept
 {
     return {re_num * c_num.re(), re_num * c_num.im()};
@@ -203,13 +207,15 @@ constexpr complex<decltype(Ty_a() / Ty_b())> operator/ (const complex<Ty_a>& a, 
     return {real, img};
 }
 
-template<typename Ty_cmplx, typename Ty_real, typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
+template<typename Ty_cmplx, typename Ty_real,
+         typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
 constexpr complex<decltype(Ty_cmplx() / Ty_real())> operator/ (const complex<Ty_cmplx>& c_num, const Ty_real& re_num) noexcept
 {
     return {c_num.re() / re_num, c_num.im() / re_num};
 }
 
-template<typename Ty_cmplx, typename Ty_real, typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
+template<typename Ty_cmplx, typename Ty_real,
+         typename std::enable_if<std::is_arithmetic<Ty_real>::value, int>::type = 0>
 constexpr complex<decltype(Ty_real() / Ty_cmplx())> operator/ (const Ty_real& re_num, const complex<Ty_cmplx>& c_num) noexcept
 {
     return complex<Ty_real>(re_num, 0) / c_num;

@@ -1,11 +1,17 @@
 #include <iostream>
-#include <complex>
+#include <random>
+#include <algorithm>
+#include <vector>
+using std::cin;
+using std::cout;
+using std::endl;
 
-using namespace std::complex_literals;
-
-int main(int argc, char** argv) 
+int main()
 {
-    std::complex<double> val = 2.4 + 1.2i;
-    std::cout << val << std::endl;
-    return 0;
+    std::random_device rd;
+
+    for (int i = 0; i  < 100; ++i)
+    {
+        std::cout << rd() << std::endl;
+    }
 }
