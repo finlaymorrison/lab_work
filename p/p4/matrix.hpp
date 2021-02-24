@@ -96,7 +96,7 @@ public:
         {
             for (int j = 0; j < N; ++j)
             {
-                elem[i * N + j] = m.elem[i *  + j];
+                elem[i * N + j] = m.elem[i * N + j];
             }
         }
     }
@@ -146,10 +146,13 @@ public:
         {
             for (int j = 0; j < N; ++j)
             {
-                elem[i * N + j] = 0;
+                elem[i * N + j] = Ty{};
             }
         }
     }
+
+    matrix<Ty, M, 1> solve_tridiagonal(matrix<Ty, M, 1> rhs);
+    bool matrix_tridiagonal_form();
 };
 
 constexpr int BLOCK_SIZE = 128;
@@ -206,6 +209,8 @@ matrix<decltype(Ty_a() * Ty_b()), M, N> operator* (const matrix<Ty_a, M, P>& a, 
 
 #else
 
+
+
 template<typename Ty_a, typename Ty_b, int M, int N, int P>
 matrix<decltype(Ty_a() * Ty_b()), M, N> operator* (const matrix<Ty_a, M, P>& a, const matrix<Ty_b, P, N>& b)
 {
@@ -225,7 +230,7 @@ matrix<decltype(Ty_a() * Ty_b()), M, N> operator* (const matrix<Ty_a, M, P>& a, 
 #endif
 
 template<typename Ty, int M, int N>
-std::ostream& operator<< (std::ostream& os, matrix<Ty, M, N> mat)
+std::ostream& operator<< (std::ostream& os, matrix<Ty, M, N>& mat)
 {
     for (int i = 0; i < M; ++i)
     {
@@ -236,6 +241,112 @@ std::ostream& operator<< (std::ostream& os, matrix<Ty, M, N> mat)
         os << '\n';
     }
     return os;
+}
+
+template<typename Ty, int M, int N>
+bool matrix<Ty, M, N>::matrix_tridiagonal_form()
+{
+    if (M != N)
+    {
+        return false;
+    }
+
+    for (int i = 0; i < M; ++i)
+    {
+        if (elem[i * N + i] == Ty{})
+        {
+            return false;
+        }
+    }
+
+    Ty off_diag = elem[1];
+    for (int i = 1; i < M; ++i)
+    {
+        if (elem[(i-1) * N + i] != off_diag)
+        {
+            return false;
+        }
+        if (elem[i * N + i - 1] != off_diag)
+        {
+            return false;
+        }
+    }
+
+    for (int i = 0; i < M - 1; ++i)
+    {
+        for (int j = i + 2; j < M; ++j)
+        {
+            if (elem[i * N + j] != Ty{}) return false;
+            if (elem[j * N + i] != Ty{}) return false;
+        }
+    }
+
+    return true;
+}
+
+template<typename Ty>
+std::vector<Ty> TridiagonalSolve(Ty E, const std::vector<Ty>& diagonal, std::vector<Ty>& row)
+{
+    const int n = diagonal.size();
+
+    std::vector<Ty> c(n);
+    Ty id;
+
+    std::vector<Ty> L(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        c[i] = E;
+    }
+
+    c[0] /= diagonal[0];
+    row[0] /= diagonal[0];
+
+    for (int i = 1; i < n; i++)
+    {
+        id = diagonal[i] - c[i - 1] * E;
+        c[i] /= id;
+        row[i] = (row[i] - row[i - 1] * E) / id;
+    }
+
+    L[n - 1] = row[n - 1];
+
+    for (int i = n - 2; i >= 0; i--)
+    {
+        L[i] = row[i] - c[i] * L[i + 1];
+    }
+
+    return L;
+}
+
+template<typename Ty, int M, int N>
+matrix<Ty, M, 1> matrix<Ty, M, N>::solve_tridiagonal(matrix<Ty, M, 1> rhs)
+{
+    if (!matrix_tridiagonal_form())
+    {
+        throw std::runtime_error("matrix not in tridiagonal form");
+    }
+
+    std::vector<Ty> diagonal(M);
+    for (int i = 0; i < M; ++i)
+    {
+        diagonal[i] = elem[i * N + i];
+    }
+    std::vector<Ty> rhs_vec(M);
+    for (int i = 0; i < M; ++i)
+    {
+        rhs_vec[i] = rhs[i][0];
+    }
+
+    std::vector<Ty> res = TridiagonalSolve(elem[1], diagonal, rhs_vec);
+
+    matrix<Ty, M, 1> out;
+    for (int i = 0; i < M; ++i)
+    {
+        out[i][0] = res[i];
+    }
+
+    return out;
 }
 
 }

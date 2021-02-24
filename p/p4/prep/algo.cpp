@@ -1,8 +1,9 @@
+#include <string>
 #include <vector>
 
 #include "../complex.hpp"
 
-std::vector<double> TridiagonalSolve(double E, std::vector<double>& D, std::vector<double>& R)
+std::vector<double> TridiagonalSolve(double E, const std::vector<double>& D, std::vector<double>& R)
 {
     const int n = D.size();
 
