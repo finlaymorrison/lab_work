@@ -188,11 +188,6 @@ void print_truth_table(RETURN(*logic_function)(INPUTS...))
 
 int main(int argc, char** argv)
 {
-    std::cout << "10  + 2  = " << static_cast<int>(bit_adder(10, 2)) << std::endl;
-    std::cout << "8   + 29 = " << static_cast<int>(bit_adder(8, 29)) << std::endl;
-    std::cout << "16  + 3  = " << static_cast<int>(bit_adder(16, 3)) << std::endl;
-    std::cout << "100 + 17 = " << static_cast<int>(bit_adder(100, 17)) << std::endl;
-    std::cout << "67  + 1  = " << static_cast<int>(bit_adder(67, 1)) << std::endl;
-    std::cout << "1   + 99 = " << static_cast<int>(bit_adder(1, 99)) << std::endl;
+    print_truth_table(full_adder);
     return 0;
 }
