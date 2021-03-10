@@ -7,7 +7,7 @@
       {
         "name": "Linux",
         "intelliSenseMode": "gcc-x64",
-        "includePath": ["${workspaceFolder}","${myDefaultIncludePath}", "/usr/lib/avr/include"],
+        "includePath": ["${workspaceFolder}","${myDefaultIncludePath}", "/usr/lib/avr/include", "/usr/include/x86_64-linux-gnu/qt5", "/usr/include/x86_64-linux-gnu/qt5/QtGui", "/usr/include/x86_64-linux-gnu/qt5/QtConcurrent", "/usr/include/x86_64-linux-gnu/qt5/QtCore", "/usr/include/x86_64-linux-gnu/qt5/QtDBus", "/usr/include/x86_64-linux-gnu/qt5/QtNetwork", "/usr/include/x86_64-linux-gnu/qt5/QtOpenGL", "/usr/include/x86_64-linux-gnu/qt5/QtOpenGLExtensions", "/usr/include/x86_64-linux-gnu/qt5/QtPlatformHeaders", "/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport", "/usr/include/x86_64-linux-gnu/qt5/QtSql", "/usr/include/x86_64-linux-gnu/qt5/QtTest", "/usr/include/x86_64-linux-gnu/qt5/QtWidgets", "/usr/include/x86_64-linux-gnu/qt5/QtXml", "${workspaceFolder}/p/p6"],
         "defines": ["__AVR_ATmega644P__", "F_CPU=12000000"],
         "cStandard": "c11",
         "cppStandard": "c++17"
