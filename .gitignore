@@ -1,1 +1,5 @@
 .vscode
+*.o
+moc_predefs.h
+moc_window.cpp
+.qmake.stash
