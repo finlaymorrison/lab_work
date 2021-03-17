@@ -1,10 +1,10 @@
 TEMPLATE = app
 TARGET = prog
-INCLUDEPATH += .
+INCLUDEPATH += . ../ ../
 
-SOURCES +=  src/*.cpp
+SOURCES +=  ../src/*.cpp
 
-HEADERS +=  src/includes/*.h
+HEADERS +=  ../src/includes/*.h
 
 CONFIG += CONSOLE silent
 
