@@ -1,3 +1,16 @@
+/*
+ * Project: prep
+ * File: prep/sudoku_prep.cpp
+ * -----
+ * File Created: Sunday, 31st January 2021 6:36:45 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:29:56 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <vector>
 #include <string>

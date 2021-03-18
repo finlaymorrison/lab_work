@@ -1,3 +1,16 @@
+/*
+ * Project: p2
+ * File: p2/prep.cpp
+ * -----
+ * File Created: Friday, 5th February 2021 1:54:18 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:30:15 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <utility>
 #include <functional>

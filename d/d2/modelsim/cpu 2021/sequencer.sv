@@ -1,3 +1,16 @@
+/*
+ * Project: cpu 2021
+ * File: cpu 2021/sequencer.sv
+ * -----
+ * File Created: Sunday, 24th January 2021 12:52:10 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:37:23 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 module sequencer #(parameter WORD_W = 8, OP_W = 3)
                   (input logic clock, n_reset, z_flag,
                    input logic [OP_W-1:0] op,

@@ -1,3 +1,16 @@
+/*
+ * Project: p5
+ * File: p5/prep.cpp
+ * -----
+ * File Created: Tuesday, 2nd March 2021 10:19:54 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:31:24 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <vector>
 

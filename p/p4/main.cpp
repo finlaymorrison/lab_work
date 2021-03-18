@@ -1,3 +1,16 @@
+/*
+ * Project: p4
+ * File: p4/main.cpp
+ * -----
+ * File Created: Monday, 22nd February 2021 12:56:35 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:30:59 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <random>
 #include <iostream>
 #include <functional>

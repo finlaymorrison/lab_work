@@ -1,3 +1,16 @@
+/*
+ * Project: assembler
+ * File: assembler/main.cpp
+ * -----
+ * File Created: Monday, 25th January 2021 7:53:48 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:36:37 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <fstream>
 #include <string>

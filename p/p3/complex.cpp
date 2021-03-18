@@ -1,3 +1,16 @@
+/*
+ * Project: p3
+ * File: p3/complex.cpp
+ * -----
+ * File Created: Wednesday, 10th February 2021 3:35:27 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:30:32 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <type_traits>
 #include <cmath>

@@ -1,3 +1,16 @@
+/*
+ * Project: c9
+ * File: c9/voltage.c
+ * -----
+ * File Created: Sunday, 24th January 2021 11:10:01 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:35:56 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 /* Set up the UART0 interface and set stdout and stdin to communicate through the UART0 interface. */
 #include "debug.h"
 
@@ -9,11 +22,7 @@ void init_adc()
 	/* Set reference to AVCC */
 	ADMUX |= _BV(REFS0);
     /* Set prescaler to 2^6 = 64. */
-<<<<<<< HEAD:c9/voltage.c
-    ADCSRA = 0;
-=======
     ADCSRA |= _BV(ADPS2) | _BV(ADPS1);
->>>>>>> d351cc9ac446f5088f5cc6cebf5ee063cddac0bc:c/c9/voltage.c
     /* Enable ADC. */
     ADCSRA |= _BV(ADEN);
 }

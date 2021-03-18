@@ -1,3 +1,16 @@
+/*
+ * Project: cpu 2021
+ * File: cpu 2021/ir.sv
+ * -----
+ * File Created: Sunday, 24th January 2021 12:52:10 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:37:07 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 module ir  #(parameter WORD_W = 8, OP_W = 3)
              (input logic clock, n_reset, Addr_bus, load_IR,
               inout wire [WORD_W-1:0] sysbus,

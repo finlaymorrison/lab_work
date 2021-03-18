@@ -1,3 +1,16 @@
+/*
+ * Project: cpu 2021
+ * File: cpu 2021/rom.sv
+ * -----
+ * File Created: Sunday, 24th January 2021 12:52:10 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:37:21 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 module rom #(parameter WORD_W = 8, OP_W = 3)
                (input logic clock, n_reset, MDR_bus, load_MDR, load_MAR, CS, R_NW,
                 inout wire [WORD_W-1:0] sysbus);

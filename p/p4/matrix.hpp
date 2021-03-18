@@ -1,3 +1,16 @@
+/*
+ * Project: p4
+ * File: p4/matrix.hpp
+ * -----
+ * File Created: Sunday, 21st February 2021 6:17:44 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:31:07 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <random>
 #include <utility>

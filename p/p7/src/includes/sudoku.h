@@ -1,3 +1,16 @@
+/*
+ * Project: includes
+ * File: includes/sudoku.h
+ * -----
+ * File Created: Wednesday, 17th March 2021 12:28:54 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:33:16 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #ifndef SUDOKU_SRC_INCLUDES_SUDOKU_H
 #define SUDOKU_SRC_INCLUDES_SUDOKU_H
 

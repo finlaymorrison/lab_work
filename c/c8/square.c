@@ -1,3 +1,16 @@
+/*
+ * Project: c8
+ * File: c8/square.c
+ * -----
+ * File Created: Sunday, 24th January 2021 11:10:01 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:34:45 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 /* Creates a constant square wave tone on PD5 at a frequency defined by FREQ*/
 
 #include <avr/io.h>

@@ -1,3 +1,16 @@
+/*
+ * Project: p1
+ * File: p1/main.cpp
+ * -----
+ * File Created: Wednesday, 3rd February 2021 1:32:30 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:29:01 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <fstream>
 #include <iostream>
 #include <vector>

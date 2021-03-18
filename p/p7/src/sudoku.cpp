@@ -1,3 +1,16 @@
+/*
+ * Project: src
+ * File: src/sudoku.cpp
+ * -----
+ * File Created: Wednesday, 17th March 2021 12:30:20 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:33:10 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include "includes/sudoku.h"
 
 #include <QGridLayout>
@@ -344,6 +357,6 @@ void sudoku_grid::value_edit()
     }
     else
     {
-         parent->statusBar()->clearMessage();
+        parent->statusBar()->clearMessage();
     }
 }

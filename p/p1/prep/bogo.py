@@ -1,3 +1,16 @@
+'''
+Project: prep
+File: prep/bogo.py
+-----
+File Created: Monday, 1st February 2021 5:52:58 pm
+Author: Finlay Morrison (morrison.fin02@gmail.com)
+-----
+Last Modified: Thursday, 18th March 2021 2:29:31 am
+Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+-----
+Copyright (CC BY-SA) 2021 Finlay Morrison
+'''
+
 import numpy as np
 import random
 import time

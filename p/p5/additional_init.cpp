@@ -1,3 +1,16 @@
+/*
+ * Project: p5
+ * File: p5/additional_init.cpp
+ * -----
+ * File Created: Wednesday, 3rd March 2021 2:32:08 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:31:16 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <string>
 

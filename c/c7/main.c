@@ -1,3 +1,16 @@
+/*
+ * Project: c7
+ * File: c7/main.c
+ * -----
+ * File Created: Sunday, 24th January 2021 11:10:01 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:34:26 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include "spi.h"
 #include "digitalPot.h"
 

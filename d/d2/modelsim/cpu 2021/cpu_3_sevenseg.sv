@@ -1,26 +1,15 @@
-/////////////////////////////////////////////////////////////////////
-// Design unit: cpu2
-//            :
-// File name  : cpu2.sv
-//            :
-// Description: Top level of basic processor
-//            :
-// Limitations: None
-//            : 
-// System     : SystemVerilog IEEE 1800-2005
-//            :
-// Author     : Mark Zwolinski
-//            : School of Electronics and Computer Science
-//            : University of Southampton
-//            : Southampton SO17 1BJ, UK
-//            : mz@ecs.soton.ac.uk
-//
-// Revision   : Version 1.0 05/08/08
-//            : Version 1.1 17/12/13
-//            : Version 1.2 11/12/14
-//            : Version 1.3 15/01/18
-//            : Version 1.4 08/01/21 - For remote working
-/////////////////////////////////////////////////////////////////////
+/*
+ * Project: cpu 2021
+ * File: cpu 2021/cpu_3_sevenseg.sv
+ * -----
+ * File Created: Sunday, 24th January 2021 10:56:54 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:36:50 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
 
 module cpu_3_sevenseg #(parameter WORD_W = 8, OP_W = 3)
              (input logic clock, n_reset,

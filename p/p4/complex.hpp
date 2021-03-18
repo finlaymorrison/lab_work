@@ -1,3 +1,16 @@
+/*
+ * Project: p4
+ * File: p4/complex.hpp
+ * -----
+ * File Created: Saturday, 20th February 2021 4:45:51 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:30:52 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <type_traits>
 #include <cmath>

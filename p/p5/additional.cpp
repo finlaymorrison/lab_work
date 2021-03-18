@@ -1,3 +1,16 @@
+/*
+ * Project: p5
+ * File: p5/additional.cpp
+ * -----
+ * File Created: Wednesday, 3rd March 2021 3:16:24 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:31:22 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <string>
 #include <iostream>
 

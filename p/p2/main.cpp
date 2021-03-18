@@ -1,3 +1,16 @@
+/*
+ * Project: p2
+ * File: p2/main.cpp
+ * -----
+ * File Created: Wednesday, 10th February 2021 7:34:47 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:30:17 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <array>
 

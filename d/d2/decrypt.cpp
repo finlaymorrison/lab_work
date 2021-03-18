@@ -1,3 +1,16 @@
+/*
+ * Project: d2
+ * File: d2/decrypt.cpp
+ * -----
+ * File Created: Monday, 25th January 2021 10:38:40 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:37:47 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <iostream>
 #include <string>
 #include <algorithm>

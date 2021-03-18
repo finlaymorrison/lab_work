@@ -1,3 +1,16 @@
+/*
+ * Project: src
+ * File: src/sudoku.cpp
+ * -----
+ * File Created: Wednesday, 10th March 2021 10:07:30 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:32:32 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include "src/includes/sudoku.h"
 
 bool sudoku_grid::possible_placement(int y, int x, int num) const

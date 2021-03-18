@@ -1,3 +1,16 @@
+/*
+ * Project: c10
+ * File: c10/timer.c
+ * -----
+ * File Created: Sunday, 24th January 2021 11:10:01 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:36:12 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <util/delay.h>
 
 #include <avr/io.h>

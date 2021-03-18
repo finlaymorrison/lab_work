@@ -1,3 +1,16 @@
+/*
+ * Project: p3
+ * File: p3/complex_no_op.cpp
+ * -----
+ * File Created: Tuesday, 16th February 2021 8:41:53 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:30:28 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <cmath>
 #include <type_traits>
 

@@ -1,3 +1,16 @@
+/*
+ * Project: prep
+ * File: prep/read.c
+ * -----
+ * File Created: Monday, 1st February 2021 9:50:44 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:29:40 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 

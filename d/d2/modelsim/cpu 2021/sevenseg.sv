@@ -1,3 +1,16 @@
+/*
+ * Project: cpu 2021
+ * File: cpu 2021/sevenseg.sv
+ * -----
+ * File Created: Sunday, 24th January 2021 10:57:58 pm
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:37:33 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 module sevenseg(output logic [6:0] data, 
                 input logic [3:0] address);
 

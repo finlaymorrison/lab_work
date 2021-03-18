@@ -1,3 +1,16 @@
+/*
+ * Project: src
+ * File: src/window.cpp
+ * -----
+ * File Created: Wednesday, 17th March 2021 11:01:01 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 2:33:12 am
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Copyright (CC BY-SA) 2021 Finlay Morrison
+ */
+
 #include <QToolBar>
 #include <QIcon>
 #include <QAction>
