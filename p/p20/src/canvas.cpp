@@ -5,9 +5,6 @@
  * File Created: Wednesday, 14th April 2021 2:42:20 pm
  * Author: Finlay Morrison (morrison.fin02@gmail.com)
  * -----
- * Last Modified: Wednesday, 14th April 2021 2:51:17 pm
- * Modified By: Finlay Morrison (morrison.fin02@gmail.com)
- * -----
  * Copyright (CC BY-SA) 2021 Finlay Morrison
  */
 
@@ -18,24 +15,73 @@
 #include <QPainterPath>
 #include <QBrush>
 
-Canvas::Canvas(QMainWindow* parent) :
-    parent(parent), drawing(false)
+Canvas::Canvas(bool enable_drawing, QWidget* parent) :
+    parent(parent), drawing_type(DrawingTypes::RandomLine), line_width(1), enable_drawing(enable_drawing)
 {
     repaint();
 }
 
+void Canvas::set_randomline_drawing()
+{
+    drawing_type = DrawingTypes::RandomLine;
+}
+
+void Canvas::set_circle_drawing()
+{
+    drawing_type = DrawingTypes::Circle;
+}
+
+void Canvas::set_square_drawing()
+{
+    drawing_type = DrawingTypes::Square;
+}
+
+void Canvas::set_straightline_drawing()
+{
+    drawing_type = DrawingTypes::StraightLine;
+}
+
 void Canvas::mousePressEvent(QMouseEvent *event) 
 {
-    drawing = true;
-    points.push_back({});
-    points.back().push_back({event->x(), event->y()});
+    if (!enable_drawing)
+    {
+        return;
+    }
+
+    if (event->button() == Qt::LeftButton)
+    {
+        switch (drawing_type)
+        {
+        case DrawingTypes::RandomLine:
+            drawings.push_back(new RandomLine(color, line_width));
+            break;
+        case DrawingTypes::Circle:
+            drawings.push_back(new Circle(color, line_width));
+            break;
+        case DrawingTypes::Square:
+            drawings.push_back(new Square(color, line_width));
+            break;
+        case DrawingTypes::StraightLine:
+            drawings.push_back(new StraightLine(color, line_width));
+            break;
+        }
+
+        drawings.back()->mouseDown(event);
+
+        repaint();
+    }
 }
 
 void Canvas::mouseMoveEvent(QMouseEvent *event) 
 {
-    if (drawing)
+    if (!enable_drawing)
     {
-        points.back().push_back({event->x(), event->y()});
+        return;
+    }
+
+    if (event->buttons() & Qt::LeftButton)
+    {
+        drawings.back()->mouseMove(event);
 
         repaint();
     }
@@ -43,9 +89,17 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event) 
 {
-    Q_UNUSED(event);
+    if (!enable_drawing)
+    {
+        return;
+    }
 
-    drawing = false;
+    if (event->button() == Qt::LeftButton)
+    {
+        drawings.back()->mouseUp(event);
+
+        repaint();
+    }
 }
 
 void Canvas::paintEvent(QPaintEvent *event)
@@ -54,18 +108,28 @@ void Canvas::paintEvent(QPaintEvent *event)
 
     QPixmap pixmap(width(), height());
     pixmap.fill(Qt::white);
-    QPainter pixmap_painter(&pixmap);
-    QPen pen;
-    pen.setColor(Qt::black);
 
-    for (const QVector<QPoint>& line : points)
+    for (DrawingType *drawing : drawings)
     {
-        for (int i = 1; i < line.size(); ++i)
-        {
-            pixmap_painter.drawLine(line[i-1], line[i]);
-        }
+        drawing->draw(pixmap);
     }
 
     QPainter painter(this);
     painter.drawPixmap(0,0, pixmap);
+}
+
+void Canvas::set_color(QColor new_color)
+{
+    color = new_color;
+}
+
+void Canvas::set_width(int new_width)
+{
+    line_width = new_width;
+}
+
+void Canvas::add_drawing(DrawingType* drawing)
+{
+    drawings.push_back(drawing);
+    repaint();
 }

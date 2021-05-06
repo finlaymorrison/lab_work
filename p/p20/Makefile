@@ -52,13 +52,23 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = src/canvas.cpp \
+SOURCES       = src/brush-menu.cpp \
+		src/canvas.cpp \
+		src/drawing-type.cpp \
 		src/main-window.cpp \
-		src/main.cpp moc_canvas.cpp \
+		src/main.cpp \
+		src/wire-manager.cpp \
+		src/wire.cpp moc_brush-menu.cpp \
+		moc_canvas.cpp \
 		moc_main-window.cpp
-OBJECTS       = canvas.o \
+OBJECTS       = brush-menu.o \
+		canvas.o \
+		drawing-type.o \
 		main-window.o \
 		main.o \
+		wire-manager.o \
+		wire.o \
+		moc_brush-menu.o \
 		moc_canvas.o \
 		moc_main-window.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -137,10 +147,18 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/silent.prf \
-		build.pro src/include/canvas.h \
-		src/include/main-window.h src/canvas.cpp \
+		build.pro src/include/brush-menu.h \
+		src/include/canvas.h \
+		src/include/drawing-type.h \
+		src/include/main-window.h \
+		src/include/wire-manager.h \
+		src/include/wire.h src/brush-menu.cpp \
+		src/canvas.cpp \
+		src/drawing-type.cpp \
 		src/main-window.cpp \
-		src/main.cpp
+		src/main.cpp \
+		src/wire-manager.cpp \
+		src/wire.cpp
 QMAKE_TARGET  = prog
 DESTDIR       = 
 TARGET        = prog
@@ -322,8 +340,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/include/canvas.h src/include/main-window.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/canvas.cpp src/main-window.cpp src/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/include/brush-menu.h src/include/canvas.h src/include/drawing-type.h src/include/main-window.h src/include/wire-manager.h src/include/wire.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/brush-menu.cpp src/canvas.cpp src/drawing-type.cpp src/main-window.cpp src/main.cpp src/wire-manager.cpp src/wire.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -356,16 +374,27 @@ moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	@echo generating ./moc_predefs.h
 	@g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_canvas.cpp moc_main-window.cpp
+compiler_moc_header_make_all: moc_brush-menu.cpp moc_canvas.cpp moc_main-window.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_canvas.cpp moc_main-window.cpp
+	-$(DEL_FILE) moc_brush-menu.cpp moc_canvas.cpp moc_main-window.cpp
+moc_brush-menu.cpp: src/include/brush-menu.h \
+		src/include/canvas.h \
+		src/include/drawing-type.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	@echo moc src/include/brush-menu.h && /usr/lib/qt5/bin/moc $(DEFINES) --include /home/finlay/src/labs/p/p20/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/finlay/src/labs/p/p20 -I/home/finlay/src/labs/p/p20 -I/home/finlay/src/labs/p/img -I/home/finlay/src/labs/p/src/includes -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/include/brush-menu.h -o moc_brush-menu.cpp
+
 moc_canvas.cpp: src/include/canvas.h \
+		src/include/drawing-type.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	@echo moc src/include/canvas.h && /usr/lib/qt5/bin/moc $(DEFINES) --include /home/finlay/src/labs/p/p20/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/finlay/src/labs/p/p20 -I/home/finlay/src/labs/p/p20 -I/home/finlay/src/labs/p/img -I/home/finlay/src/labs/p/src/includes -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/include/canvas.h -o moc_canvas.cpp
 
 moc_main-window.cpp: src/include/main-window.h \
 		src/include/canvas.h \
+		src/include/drawing-type.h \
+		src/include/brush-menu.h \
+		src/include/wire.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	@echo moc src/include/main-window.h && /usr/lib/qt5/bin/moc $(DEFINES) --include /home/finlay/src/labs/p/p20/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/finlay/src/labs/p/p20 -I/home/finlay/src/labs/p/p20 -I/home/finlay/src/labs/p/img -I/home/finlay/src/labs/p/src/includes -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include src/include/main-window.h -o moc_main-window.cpp
@@ -386,16 +415,46 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
-canvas.o: src/canvas.cpp src/include/canvas.h
+brush-menu.o: src/brush-menu.cpp src/include/brush-menu.h \
+		src/include/canvas.h \
+		src/include/drawing-type.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o brush-menu.o src/brush-menu.cpp
+
+canvas.o: src/canvas.cpp src/include/canvas.h \
+		src/include/drawing-type.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o canvas.o src/canvas.cpp
 
+drawing-type.o: src/drawing-type.cpp src/include/drawing-type.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drawing-type.o src/drawing-type.cpp
+
 main-window.o: src/main-window.cpp src/include/main-window.h \
-		src/include/canvas.h
+		src/include/canvas.h \
+		src/include/drawing-type.h \
+		src/include/brush-menu.h \
+		src/include/wire.h \
+		src/include/wire-manager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main-window.o src/main-window.cpp
 
 main.o: src/main.cpp src/include/main-window.h \
-		src/include/canvas.h
+		src/include/canvas.h \
+		src/include/drawing-type.h \
+		src/include/brush-menu.h \
+		src/include/wire.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
+
+wire-manager.o: src/wire-manager.cpp src/include/wire-manager.h \
+		src/include/wire.h \
+		src/include/canvas.h \
+		src/include/drawing-type.h \
+		src/include/main-window.h \
+		src/include/brush-menu.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o wire-manager.o src/wire-manager.cpp
+
+wire.o: src/wire.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o wire.o src/wire.cpp
+
+moc_brush-menu.o: moc_brush-menu.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_brush-menu.o moc_brush-menu.cpp
 
 moc_canvas.o: moc_canvas.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_canvas.o moc_canvas.cpp
