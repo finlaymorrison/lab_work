@@ -28,8 +28,6 @@ BrushMenu::BrushMenu(QWidget* parent, Canvas *canvas) :
 {
     QVBoxLayout *vbox = new QVBoxLayout(this);
 
-    setup_brushes(vbox);
-    add_separator(vbox);
     setup_drawing_types(vbox);
     add_separator(vbox);
     setup_colors(vbox);
@@ -47,23 +45,6 @@ void BrushMenu::add_separator(QVBoxLayout *vbox)
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
     vbox->addWidget(line);
-}
-
-void BrushMenu::setup_brushes(QVBoxLayout *vbox)
-{
-    QGridLayout *brush_type_menu = new QGridLayout;
-
-    QPixmap pencil_pix("img/pencil-icon.png");
-    QPushButton *pencil_button = new QPushButton;
-    pencil_button->setIcon(QIcon(pencil_pix));
-    brush_type_menu->addWidget(pencil_button, 0, 0);
-
-    QPixmap paintbrush_pix("img/paintbrush-icon.png");
-    QPushButton *paintbrush_button = new QPushButton;
-    paintbrush_button->setIcon(QIcon(paintbrush_pix));
-    brush_type_menu->addWidget(paintbrush_button, 0, 1);
-
-    vbox->addLayout(brush_type_menu);
 }
 
 void BrushMenu::setup_drawing_types(QVBoxLayout *vbox)

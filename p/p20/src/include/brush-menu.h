@@ -35,7 +35,6 @@ private slots:
 
 private:
     void add_separator(QVBoxLayout *vbox);
-    void setup_brushes(QVBoxLayout *vbox);
     void setup_drawing_types(QVBoxLayout *vbox);
     void setup_colors(QVBoxLayout *vbox);
     void setup_thickness(QVBoxLayout *vbox);

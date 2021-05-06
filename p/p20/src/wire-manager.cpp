@@ -11,6 +11,7 @@
 #include "include/wire-manager.h"
 #include "include/wire.h"
 #include "include/canvas.h"
+#include "include/instruction-encoder.h"
 
 #include <QDebug>
 #include <QVector>
@@ -28,8 +29,20 @@ QVector<bool> int_to_binary(int num)
     return binary;
 }
 
+int binary_to_int(QVector<bool> binary)
+{
+    int num = 0;
+
+    for (int i = 0; i < binary.size(); ++i)
+    {
+        num |= binary[i]<<i;
+    }
+
+    return num;
+}
+
 WireManager::WireManager(Wire *wire, Canvas *canvas, WindowType window_type) :
-    wire(wire), canvas(canvas), window_type(window_type)
+    wire(wire), canvas(canvas), interpreter(canvas), window_type(window_type)
 {}
 
 void WireManager::run()
@@ -49,8 +62,8 @@ void WireManager::run_send()
     int drawing_count=0;
     forever
     {
-        sleep(0.01);
-        if (canvas->drawings.length() > drawing_count)
+        sleep(0.001);
+        if (canvas->drawings.length() > drawing_count && !canvas->is_drawing())
         {
             transmit_drawing(canvas->drawings[drawing_count++]);
         }
@@ -59,22 +72,53 @@ void WireManager::run_send()
 
 void WireManager::run_receive()
 {
+    QVector<bool> curr_num;
     forever
     {
-        sleep(0.01);
+        sleep(0.001);
         if (wire->dirty)
         {
-            qDebug() << wire->data;
+            curr_num.push_back(wire->data);
             wire->dirty = false;
+            
+            if (curr_num.size() >= 32)
+            {
+                int num = binary_to_int(curr_num);
+                interpreter.input_num(num);
+                curr_num.clear();
+            }
         }
     }
 }
 
 void WireManager::transmit_drawing(DrawingType *drawing)
 {
-    int type_id = static_cast<int>(drawing->get_type());
-    transmit_number(type_id);
-    
+    DrawingTypes drawing_type = drawing->get_type();
+
+    QVector<int> buffer;
+
+    switch(drawing_type)
+    {
+    case DrawingTypes::None:
+        break;
+    case DrawingTypes::RandomLine:
+        buffer = InstructionEncoder::EncodeRandomLine(dynamic_cast<RandomLine*>(drawing));
+        break;
+    case DrawingTypes::Circle:
+        buffer = InstructionEncoder::EncodeCircle(dynamic_cast<Circle*>(drawing));
+        break;
+    case DrawingTypes::Square:
+        buffer = InstructionEncoder::EncodeSquare(dynamic_cast<Square*>(drawing));
+        break;
+    case DrawingTypes::StraightLine:
+        buffer = InstructionEncoder::EncodeStraightLine(dynamic_cast<StraightLine*>(drawing));
+        break;
+    }
+
+    for (int i = 0; i < buffer.size(); ++i)
+    {
+        transmit_number(buffer[i]);
+    }
 }
 
 void WireManager::transmit_number(int num)
@@ -85,7 +129,7 @@ void WireManager::transmit_number(int num)
     {
         while (wire->dirty)
         {
-            sleep(0.01);
+            sleep(0.001);
         }
         wire->data = binary[i];
         wire->dirty = true;

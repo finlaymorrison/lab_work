@@ -188,3 +188,122 @@ void StraightLine::mouseUp(QMouseEvent *event)
 {
     finish = event->pos();
 }
+
+
+
+
+QColor DrawingType::get_color()
+{
+    return color;
+}
+
+int DrawingType::get_width()
+{
+    return line_width;
+}
+
+void DrawingType::set_color(QColor new_color)
+{
+    color = new_color;
+}
+
+void DrawingType::set_width(int new_width)
+{
+    line_width = new_width;
+}
+
+
+
+
+
+void RandomLine::add_point(QPoint point)
+{
+    points.push_back(point);
+}
+
+QVector<QPoint> RandomLine::get_points()
+{
+    return points;
+}
+
+
+
+
+
+
+
+QPoint Circle::get_center()
+{
+    return center;
+}
+
+int Circle::get_radius()
+{
+    return radius;
+}
+
+void Circle::set_center(QPoint new_center)
+{
+    center = new_center;
+}
+
+void Circle::set_radius(int new_radius)
+{
+    radius = new_radius;
+}
+
+void Circle::set_complete(bool new_complete)
+{
+    complete = new_complete;
+}
+
+
+
+
+
+
+
+void Square::set_tl(QPoint new_tl)
+{
+    tl = new_tl;
+}
+
+void Square::set_br(QPoint new_br)
+{
+    br = new_br;
+}
+
+QPoint Square::get_tl()
+{
+    return tl;
+}
+
+QPoint Square::get_br()
+{
+    return br;
+}
+
+
+
+
+
+
+void StraightLine::set_start(QPoint new_start)
+{
+    start = new_start;
+}
+
+void StraightLine::set_finish(QPoint new_finish)
+{
+    finish = new_finish;
+}
+
+QPoint StraightLine::get_start()
+{
+    return start;
+}
+
+QPoint StraightLine::get_finish()
+{
+    return finish;
+}

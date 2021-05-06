@@ -15,6 +15,7 @@
 #include "canvas.h"
 #include "main-window.h"
 #include "drawing-type.h"
+#include "instruction-interpreter.h"
 
 #include <QThread>
 
@@ -23,6 +24,7 @@ class WireManager : public QThread
 private:
     Wire *wire;
     Canvas *canvas;
+    InstructionInterpreter interpreter;
 
     WindowType window_type;
 

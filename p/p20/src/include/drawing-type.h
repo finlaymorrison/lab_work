@@ -18,10 +18,11 @@
 
 enum class DrawingTypes
 {
-    RandomLine = 0,
-    Circle = 1,
-    Square = 2,
-    StraightLine = 3
+    None = 0,
+    RandomLine = 1,
+    Circle = 2,
+    Square = 3,
+    StraightLine = 4
 };
 
 class DrawingType
@@ -32,6 +33,11 @@ protected:
 
 public:
     DrawingType(QColor color, int line_width);
+
+    QColor get_color();
+    int get_width();
+    void set_color(QColor new_color);
+    void set_width(int new_width);
 
     virtual void draw(QPixmap &img) = 0;
     virtual void mouseDown(QMouseEvent *event) = 0;
@@ -48,6 +54,9 @@ private:
 
 public:
     RandomLine(QColor color, int line_width);
+
+    void add_point(QPoint point);
+    QVector<QPoint> get_points();
 
     void draw(QPixmap &img) override;
     void mouseDown(QMouseEvent *event) override;
@@ -70,6 +79,13 @@ private:
 public:
     Circle(QColor color, int line_width);
 
+    QPoint get_center();
+    int get_radius();
+
+    void set_center(QPoint new_center);
+    void set_radius(int new_radius);
+    void set_complete(bool new_complete);
+
     void draw(QPixmap &img) override;
     void mouseDown(QMouseEvent *event) override;
     void mouseMove(QMouseEvent *event) override;
@@ -86,6 +102,11 @@ private:
 public:
     Square(QColor color, int line_width);
 
+    void set_tl(QPoint new_tl);
+    void set_br(QPoint new_br);
+    QPoint get_tl();
+    QPoint get_br();
+
     void draw(QPixmap &img) override;
     void mouseDown(QMouseEvent *event) override;
     void mouseMove(QMouseEvent *event) override;
@@ -101,6 +122,11 @@ private:
 
 public:
     StraightLine(QColor color, int line_width);
+
+    void set_start(QPoint new_start);
+    void set_finish(QPoint new_finish);
+    QPoint get_start();
+    QPoint get_finish();
 
     void draw(QPixmap &img) override;
     void mouseDown(QMouseEvent *event) override;

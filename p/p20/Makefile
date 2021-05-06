@@ -55,6 +55,8 @@ OBJECTS_DIR   = ./
 SOURCES       = src/brush-menu.cpp \
 		src/canvas.cpp \
 		src/drawing-type.cpp \
+		src/instruction-encoder.cpp \
+		src/instruction-interpreter.cpp \
 		src/main-window.cpp \
 		src/main.cpp \
 		src/wire-manager.cpp \
@@ -64,6 +66,8 @@ SOURCES       = src/brush-menu.cpp \
 OBJECTS       = brush-menu.o \
 		canvas.o \
 		drawing-type.o \
+		instruction-encoder.o \
+		instruction-interpreter.o \
 		main-window.o \
 		main.o \
 		wire-manager.o \
@@ -150,11 +154,15 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		build.pro src/include/brush-menu.h \
 		src/include/canvas.h \
 		src/include/drawing-type.h \
+		src/include/instruction-encoder.h \
+		src/include/instruction-interpreter.h \
 		src/include/main-window.h \
 		src/include/wire-manager.h \
 		src/include/wire.h src/brush-menu.cpp \
 		src/canvas.cpp \
 		src/drawing-type.cpp \
+		src/instruction-encoder.cpp \
+		src/instruction-interpreter.cpp \
 		src/main-window.cpp \
 		src/main.cpp \
 		src/wire-manager.cpp \
@@ -340,8 +348,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/include/brush-menu.h src/include/canvas.h src/include/drawing-type.h src/include/main-window.h src/include/wire-manager.h src/include/wire.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/brush-menu.cpp src/canvas.cpp src/drawing-type.cpp src/main-window.cpp src/main.cpp src/wire-manager.cpp src/wire.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/include/brush-menu.h src/include/canvas.h src/include/drawing-type.h src/include/instruction-encoder.h src/include/instruction-interpreter.h src/include/main-window.h src/include/wire-manager.h src/include/wire.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/brush-menu.cpp src/canvas.cpp src/drawing-type.cpp src/instruction-encoder.cpp src/instruction-interpreter.cpp src/main-window.cpp src/main.cpp src/wire-manager.cpp src/wire.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -427,12 +435,22 @@ canvas.o: src/canvas.cpp src/include/canvas.h \
 drawing-type.o: src/drawing-type.cpp src/include/drawing-type.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drawing-type.o src/drawing-type.cpp
 
+instruction-encoder.o: src/instruction-encoder.cpp src/include/instruction-encoder.h \
+		src/include/drawing-type.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o instruction-encoder.o src/instruction-encoder.cpp
+
+instruction-interpreter.o: src/instruction-interpreter.cpp src/include/instruction-interpreter.h \
+		src/include/drawing-type.h \
+		src/include/canvas.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o instruction-interpreter.o src/instruction-interpreter.cpp
+
 main-window.o: src/main-window.cpp src/include/main-window.h \
 		src/include/canvas.h \
 		src/include/drawing-type.h \
 		src/include/brush-menu.h \
 		src/include/wire.h \
-		src/include/wire-manager.h
+		src/include/wire-manager.h \
+		src/include/instruction-interpreter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main-window.o src/main-window.cpp
 
 main.o: src/main.cpp src/include/main-window.h \
@@ -447,7 +465,9 @@ wire-manager.o: src/wire-manager.cpp src/include/wire-manager.h \
 		src/include/canvas.h \
 		src/include/drawing-type.h \
 		src/include/main-window.h \
-		src/include/brush-menu.h
+		src/include/brush-menu.h \
+		src/include/instruction-interpreter.h \
+		src/include/instruction-encoder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o wire-manager.o src/wire-manager.cpp
 
 wire.o: src/wire.cpp 

@@ -21,8 +21,8 @@ int main(int argc, char* argv[])
 
     MainWindow send_window(WindowType::Send, &wire, 800, 800, "Send Window");
     MainWindow receive_window(WindowType::Receive, &wire, 800, 800, "Receive Window");
-    send_window.show();
     receive_window.show();
+    send_window.show();
 
     return app.exec();
 }

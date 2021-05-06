@@ -36,6 +36,7 @@ private:
     QColor color;
 
     bool enable_drawing;
+    bool drawing;
 
 public:
     QList<DrawingType*> drawings;
@@ -53,6 +54,7 @@ public:
     void set_width(int new_width);
 
     void add_drawing(DrawingType* drawing);
+    bool is_drawing();
 
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;

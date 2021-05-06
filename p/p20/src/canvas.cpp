@@ -16,7 +16,7 @@
 #include <QBrush>
 
 Canvas::Canvas(bool enable_drawing, QWidget* parent) :
-    parent(parent), drawing_type(DrawingTypes::RandomLine), line_width(1), enable_drawing(enable_drawing)
+    parent(parent), drawing_type(DrawingTypes::RandomLine), line_width(1), enable_drawing(enable_drawing), drawing(false)
 {
     repaint();
 }
@@ -50,8 +50,12 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 
     if (event->button() == Qt::LeftButton)
     {
+        drawing = true;
+
         switch (drawing_type)
         {
+        case DrawingTypes::None:
+            break;
         case DrawingTypes::RandomLine:
             drawings.push_back(new RandomLine(color, line_width));
             break;
@@ -99,6 +103,8 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
         drawings.back()->mouseUp(event);
 
         repaint();
+
+        drawing = false;
     }
 }
 
@@ -132,4 +138,9 @@ void Canvas::add_drawing(DrawingType* drawing)
 {
     drawings.push_back(drawing);
     repaint();
+}
+
+bool Canvas::is_drawing()
+{
+    return drawing;
 }
