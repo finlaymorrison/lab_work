@@ -19,23 +19,33 @@
 
 #include <QThread>
 
+/* Controls the communication of a window on the wire. */
 class WireManager : public QThread
 {
 private:
+    /* Shared wire. */
     Wire *wire;
+    /* Canvas to read/write drawings to. */
     Canvas *canvas;
+    /* State-machine class that interprets streams of numbers into drawings. */
     InstructionInterpreter interpreter;
 
+    /* Send or receive window. */
     WindowType window_type;
 
 public:
     WireManager(Wire *wire, Canvas* canvas, WindowType window_type);
 
+    /* Start the thread. */
     void run() override;
+
+    /* Functions for the two modes of operation for this class. */
     void run_send();
     void run_receive();
 
+    /* Transmits the drawing passed in using the transmit_number function. */
     void transmit_drawing(DrawingType *drawing);
+    /* Takes in an integer and sends it over the wire. */
     void transmit_number(int num);
 };
 

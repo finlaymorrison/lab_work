@@ -17,12 +17,15 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
+    /* Setting up the wire that will be used to communicate between the two windows. */
     Wire wire{false, false};
 
+    /* Creating two windows for sending and receiving. */
     MainWindow send_window(WindowType::Send, &wire, 800, 800, "Send Window");
     MainWindow receive_window(WindowType::Receive, &wire, 800, 800, "Receive Window");
     receive_window.show();
     send_window.show();
 
+    /* Starting program execution. */
     return app.exec();
 }

@@ -22,21 +22,27 @@
 #include <QMenuBar>
 #include <QMenu>
 
+/* Used to differentiate between wether a window will send or receive. */
 enum class WindowType
 {
     Send=0,
     Receive=1
 };
 
+/* An entire instance of a send or receive window */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 private:
+    /* Top toolbar, quit, TODO: new, open, load. */
     QToolBar *file_toolbar;
+    /* Displays and stores the current drawings. */
     Canvas *canvas;
+    /* Left menu for choosing drawing type and parameters. */
     BrushMenu *brush_menu;
 
+    /* Send or receive window. */
     WindowType window_type;
 
 public:

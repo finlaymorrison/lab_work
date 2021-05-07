@@ -11,9 +11,12 @@
 #ifndef INCLUDE_WIRE_H
 #define INCLUDE_WIRE_H
 
+/* Struct for data transmission. */
 struct Wire
 {
+    /* Indicates if there is new data on the wire. */
     bool dirty;
+    /* Wire data. */
     bool data;
 };
 
